@@ -4,3 +4,6 @@ from userauths.models import User
 
 class UserRegisterForm(UserCreationForm):
     pass
+
+
+
