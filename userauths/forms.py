@@ -6,7 +6,3 @@ class UserRegisterForm(UserCreationForm):
     pass
 
 
-
-
-
-
