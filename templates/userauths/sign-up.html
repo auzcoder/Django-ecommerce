@@ -27,11 +27,11 @@
                             <div class="col-lg-6 col-md-8">
                                 <div class="login_wrap widget-taber-content background-white">
                                     <div class="padding_eight_all bg-white">
-{#                                        {% if form.errors %}#}
-{#                                        <div class="alert alert-danger">#}
-{#                                            <strong>{{ form.errors }}</strong>#}
-{#                                        </div>#}
-{#                                        {% endif %}#}
+                                        {% if form.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ form.errors }}</strong>
+                                        </div>
+                                        {% endif %}
                                         <div class="heading_s1">
                                             <h1 class="mb-5">Ro'yxatdan o'tish</h1>
                                             <p class="mb-30">Sizda akkaunt bormi? <a href="page-login.html">Kirish</a></p>
@@ -112,36 +112,28 @@
 </main>
 
 
-{% if form.errors %}
-    <script>
-        function noUser() {
-            Swal.fire({
-                position: "bottom-end",
-                icon: "error",
-                title: "Bunday foydalanuvchi mavjudga o'xshaydi!",
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-    </script>
-{% endif %}
+{#{% if form.errors %}#}
+{#    <script>#}
+{#        noUser()#}
+{#    </script>#}
+{#{% endif %}#}
 {% endblock content %}
 
 
-{% block jscontent %}
-    {% if form.errors %}
-        <script>
-            function noUser() {
-                Swal.fire({
-                    position: "bottom-end",
-                    icon: "error",
-                    title: "Bunday foydalanuvchi mavjudga o'xshaydi!",
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
-        </script>
-    {% endif %}
-{% endblock jscontent %}
+{#{% block jscontent %}#}
+{#    {% if form.errors %}#}
+{#        <script>#}
+{#            function noUser() {#}
+{#                Swal.fire({#}
+{#                    position: "bottom-end",#}
+{#                    icon: "error",#}
+{#                    title: "Bunday foydalanuvchi mavjudga o'xshaydi!",#}
+{#                    showConfirmButton: false,#}
+{#                    timer: 1500#}
+{#                })#}
+{#            }#}
+{#        </script>#}
+{#    {% endif %}#}
+{#{% endblock jscontent %}#}
 
 
