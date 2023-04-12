@@ -24,3 +24,11 @@ def register_views(request):
         'form': form,
     }
     return render(request, 'userauths/sign-up.html', context=context)
+
+
+def login_views(request):
+    if request.user.is_authenticated:
+        return redirect('core:index')
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
