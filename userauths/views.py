@@ -19,6 +19,7 @@ def register_views(request):
     else:
         form = UserRegisterForm()
 
+
     context = {
         'form': form,
     }
