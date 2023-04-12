@@ -9,7 +9,8 @@ def register_views(request):
         if form.is_valid():
             new_user = form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f"Assalomu aleykum {username}, sizni akkauntingiz muoffaqiyatli yaratildi!")
+            username = username.title()
+            messages.success(request, f"Assalomu aleykum {username}, sizni akkauntingiz muvaffaqiyatli yaratildi!")
             new_user = authenticate(username=form.cleaned_data['email'],
                                     password=form.cleaned_data['password1']
                                     )
