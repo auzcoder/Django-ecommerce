@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from userauths.forms import UserRegisterForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
+from django.conf import settings
+
+User = settings.AUTH_USER_MODEL
 
 def register_views(request):
     if request.method == 'POST':
@@ -19,7 +22,7 @@ def register_views(request):
             return redirect('core:index')
         else:
             form = UserRegisterForm()
-            messages.error(request, "Sizda xatolik mavjud")
+            messages.error(request, "Sizda ro'yxatdan o'tishda xatolik mavjud")
             return redirect('userauths:sign_up')
     form = UserRegisterForm()
     context = {
@@ -34,3 +37,21 @@ def login_views(request):
 
     if request.method == 'POST':
         email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(email=email)
+        except:
+            messages.warning(request, f"{email} foydalanuvchisi mavjud emas!")
+
+
+
+
+
+
+
+
+
+
+
+            

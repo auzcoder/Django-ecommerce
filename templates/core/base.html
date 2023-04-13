@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slider-range.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
     <!-- Sweet Alert CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 
 </head>
 
@@ -825,15 +825,15 @@
         </div>
     </footer>
     <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="text-center">
-                    <img src="{% static 'assets/imgs/theme/loading.gif' %}" alt="" />
-                </div>
-            </div>
-        </div>
-    </div>
+{#    <div id="preloader-active">#}
+{#        <div class="preloader d-flex align-items-center justify-content-center">#}
+{#            <div class="preloader-inner position-relative">#}
+{#                <div class="text-center">#}
+{#                    <img src="{% static 'assets/imgs/theme/loading.gif' %}" alt="" />#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
     <!-- Vendor JS-->
     <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
     <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
@@ -859,7 +859,8 @@
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script src="{% static 'assets/js/shop.js' %}"></script>
     <!-- Sweet Alert JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
 
     {% block jscontent %}
 
@@ -868,9 +869,9 @@
 
     {% if messages %}
     {% for message in messages %}
-    {% if message.tags == "error" %}
-      <script>
-      Swal.fire({
+        {% if message.tags == "error" %}
+            <script>
+                Swal.fire({
                     customClass: {
                         title: 'swal2-title'
                     },
@@ -879,28 +880,28 @@
                     title: '{{message}}',
                     showConfirmButton: false,
                     timer: 2300
-      })
-      </script>
+                })
+            </script>
         {% else %}
-        <script>
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
+            <script>
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
 
-    Toast.fire({
-      icon: '{{message.tags}}',
-      title: '{{message}}'
-    })
-    </script>
-{% endif %}
+                Toast.fire({
+                    icon: '{{message.tags}}',
+                    title: '{{message}}'
+                })
+            </script>
+        {% endif %}
     {% endfor %}
     {% endif %}
 
