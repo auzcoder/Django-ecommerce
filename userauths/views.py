@@ -44,6 +44,12 @@ def login_views(request):
         except:
             messages.warning(request, f"{email} foydalanuvchisi mavjud emas!")
 
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.warning(request, f"Siz tizimga kirdingiz!")
+            return redirect('core:index')
 
 
 
@@ -54,4 +60,5 @@ def login_views(request):
 
 
 
-            
+
+
