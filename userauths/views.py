@@ -17,10 +17,11 @@ def register_views(request):
             login(request, new_user)
 
             return redirect('core:index')
-    else:
-        form = UserRegisterForm()
-        messages.success(request, "Sizda xatolik mavjud")
-
+        else:
+            form = UserRegisterForm()
+            messages.error(request, "Sizda xatolik mavjud")
+            return redirect('userauths:sign_up')
+    form = UserRegisterForm()
     context = {
         'form': form,
     }
