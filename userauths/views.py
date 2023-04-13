@@ -15,10 +15,11 @@ def register_views(request):
                                     password=form.cleaned_data['password1']
                                     )
             login(request, new_user)
+
             return redirect('core:index')
     else:
         form = UserRegisterForm()
-
+        messages.success(request, "Sizda xatolik mavjud")
 
     context = {
         'form': form,
